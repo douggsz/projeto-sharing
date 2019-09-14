@@ -10,8 +10,11 @@
     "require": {
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
+        "google/cloud-core": "^1.32",
+        "kreait/laravel-firebase": "^1.0",
         "laravel/framework": "^6.0",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "monolog/monolog": "1.x-dev"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
