@@ -15,11 +15,13 @@ class CreateAvaliacaosTable extends Migration
     {
         Schema::create('avaliacaos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('usuario');
-            $table->string('codigo');
+            $table->unsignedBigInteger('usuario');
+            $table->unsignedBigInteger('codigo');
             $table->float('nota');
-            $table->foreign('usuario')->references('usuario')->on('usuarios');
-            $table->foreign('codigo')->references('codigo')->on('conteudos');
+            $table->boolean('like')->default(false);
+            $table->boolean('dislike')->default(false);
+            $table->foreign('usuario')->references('id')->on('usuarios');
+            $table->foreign('codigo')->references('id')->on('conteudos');
             $table->timestamps();
         });
     }

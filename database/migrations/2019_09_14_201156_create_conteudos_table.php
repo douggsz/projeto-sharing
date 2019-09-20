@@ -17,13 +17,11 @@ class CreateConteudosTable extends Migration
             $table->bigIncrements('id');
             $table->integer('codigo')->nullable(false);
             $table->string('url')->default('Material');
-            $table->string('autor');
+            $table->unsignedBigInteger('autor');
             $table->string('descricao')->default('Conteudo não possui descrição');
             $table->integer('visualizacoes')->default(0);
             $table->float('avaliacao')->default(0);
-            $table->boolean('like')->default(false);
-            $table->boolean('dislike')->default(false);
-            $table->foreign('autor')->references('usuario')->on('usuarios');
+            $table->foreign('autor')->references('id')->on('usuarios');
             $table->softDeletes();
             $table->timestamps();
         });

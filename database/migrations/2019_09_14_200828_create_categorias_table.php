@@ -15,7 +15,7 @@ class CreateCategoriasTable extends Migration
     {
         Schema::create('categorias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('codigo');
+            $table->Integer('codigo_categoria')->unique();
             $table->unsignedBigInteger('descricao');
             $table->foreign('descricao')->references('id')->on('descricao_categorias');
             $table->softDeletes();
