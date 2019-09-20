@@ -9,9 +9,9 @@ class administrador extends Seeder
     {
         DB::table('usuarios')->insert([
             'usuario' => 'admin',
-            'nome' => 'Administrador',
-            'senha' => bcrypt('admin'),
-            'tipo' => 3
+            'nome'    => 'Administrador',
+            'senha'   => bcrypt('admin'),
+            'tipo'    => 3
         ]);
     }
 }

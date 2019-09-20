@@ -7,8 +7,8 @@ class tipo_usuario extends Seeder
 {
     public function run()
     {
-        DB::table('tipo_usuarios')->insert(['descricao' =>  'ADM']);
-        DB::table('tipo_usuarios')->insert(['descricao' =>  'Aluno']);
-        DB::table('tipo_usuarios')->insert(['descricao' =>  'Professor']);
+        DB::table('tipo_usuarios')->insert(['descricao' => 'ADM']);
+        DB::table('tipo_usuarios')->insert(['descricao' => 'Aluno']);
+        DB::table('tipo_usuarios')->insert(['descricao' => 'Professor']);
     }
 }
