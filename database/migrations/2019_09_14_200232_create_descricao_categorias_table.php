@@ -15,7 +15,8 @@ class CreateDescricaoCategoriasTable extends Migration
     {
         Schema::create('descricao_categorias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descricao');
+            $table->string('nome');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

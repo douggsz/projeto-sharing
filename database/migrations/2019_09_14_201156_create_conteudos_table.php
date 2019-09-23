@@ -14,8 +14,8 @@ class CreateConteudosTable extends Migration
     public function up()
     {
         Schema::create('conteudos', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('codigo')->nullable(false);
+            $table->unsignedBigInteger('codigo');
+            $table->primary('codigo');
             $table->string('url')->default('Material');
             $table->unsignedBigInteger('autor');
             $table->string('descricao')->default('Conteudo não possui descrição');

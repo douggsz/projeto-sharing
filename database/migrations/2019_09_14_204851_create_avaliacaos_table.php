@@ -21,7 +21,8 @@ class CreateAvaliacaosTable extends Migration
             $table->boolean('like')->default(false);
             $table->boolean('dislike')->default(false);
             $table->foreign('usuario')->references('id')->on('usuarios');
-            $table->foreign('codigo')->references('id')->on('conteudos');
+            $table->foreign('codigo')->references('codigo')->on('conteudos');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
