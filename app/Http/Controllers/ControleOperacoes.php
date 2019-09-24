@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DescricaoCategoria;
 use Illuminate\Http\Request;
 
 class ControleOperacoes extends Controller
@@ -14,4 +15,14 @@ class ControleOperacoes extends Controller
         return $codigo;
     }
 
+    public function descricoes()
+    {
+        $desc = new DescricaoCategoria();
+        $descricoes = $desc::all();
+        if (isset($descricoes)) {
+            return json_encode($descricoes);
+        } else {
+            return response('Não há descricoes', 404);
+        }
+    }
 }

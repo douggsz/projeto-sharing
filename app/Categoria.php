@@ -13,4 +13,9 @@ class Categoria extends Model
     {
         return $this->hasOne('App\DescricaoCategoria', 'id', 'descricao');
     }
+
+    public function usuarios()
+    {
+        return $this->belongsTo('App\Usuarios', 'categorias_id', 'codigo_categoria');
+    }
 }

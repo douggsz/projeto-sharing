@@ -18,12 +18,12 @@ class CreateConteudosTable extends Migration
             $table->primary('codigo');
             $table->string('url')->default('Material');
             $table->unsignedBigInteger('autor');
-            $table->unsignedBigInteger('categoria_id');
+            $table->Integer('categorias_id')->default(0);
             $table->string('descricao')->default('Conteudo não possui descrição');
             $table->integer('visualizacoes')->default(0);
             $table->float('avaliacao')->default(0);
             $table->foreign('autor')->references('id')->on('usuarios');
-            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('categorias_id')->references('codigo_categoria')->on('categorias');
             $table->softDeletes();
             $table->timestamps();
         });

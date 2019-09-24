@@ -12,9 +12,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            administrador::class,
             categorias::class,
             tipo_usuario::class,
+            administrador::class,
         ]);
     }
 }
