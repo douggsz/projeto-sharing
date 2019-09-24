@@ -11,4 +11,8 @@ class Usuario extends Model
     public function funcao(){
         return $this->hasOne('App\TipoUsuario','id','tipo');
     }
+    public function conteudos(){
+        return $this->hasMany('App\Conteudo','autor','id');
+    }
+
 }

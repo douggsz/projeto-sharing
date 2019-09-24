@@ -10,7 +10,7 @@ class ControleCategoria extends Controller
     public function index()
     {
         $categorias = new Categoria;
-        $listaCategorias = $categorias::with(['nome'])->get();
+        $listaCategorias = $categorias::all();
         if (isset($listaCategorias)) {
             return json_encode($listaCategorias);
         } else {

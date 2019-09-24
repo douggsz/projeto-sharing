@@ -13,4 +13,5 @@ class ControleOperacoes extends Controller
         $codigo = $inicio . $final;
         return $codigo;
     }
+
 }
