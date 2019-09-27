@@ -4,14 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Conteudo;
 use Illuminate\Http\Request;
+use function GuzzleHttp\Promise\all;
 
 class ControleConteudo extends Controller
 {
     public function index()
     {
-        $listaConteudos = Conteudo::all();
-
+        $buscaConteudo = new Conteudo();
+        $listaConteudo = $buscaConteudo::all();
+        if (isset($listaConteudo)) {
+            return json_encode($listaConteudo);
+        } else {
+            return response("Nada publcado", 404);
+        }
     }
+
     public function create()
     {
         //
@@ -24,7 +31,13 @@ class ControleConteudo extends Controller
 
     public function show($id)
     {
-
+        $buscaConteudo = new Conteudo();
+        $conteudo = $buscaConteudo::find($id);
+        if (isset($conteudo)){
+            return json_encode($conteudo);
+        } else {
+            return response("Não encontrado");
+        }
     }
 
     public function edit($id)

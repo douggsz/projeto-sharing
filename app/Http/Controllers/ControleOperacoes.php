@@ -25,4 +25,5 @@ class ControleOperacoes extends Controller
             return response('Não há descricoes', 404);
         }
     }
+
 }

@@ -52,7 +52,7 @@ class ControleCategoria extends Controller
 
     public function destroy($id)
     {
-        //
+
     }
 
 }
