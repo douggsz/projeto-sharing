@@ -52,7 +52,14 @@ class ControleCategoria extends Controller
 
     public function destroy($id)
     {
-
+        $categorias = new Categoria;
+        $categoria = $categorias::find($id);
+        if (isset($categoria)) {
+            $categoria->delete();
+            return response("OK", 200);
+        } else {
+            return response("Nâo encontrado", 404);
+        }
     }
 
 }

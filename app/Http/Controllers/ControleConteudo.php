@@ -33,7 +33,7 @@ class ControleConteudo extends Controller
     {
         $buscaConteudo = new Conteudo();
         $conteudo = $buscaConteudo::find($id);
-        if (isset($conteudo)){
+        if (isset($conteudo)) {
             return json_encode($conteudo);
         } else {
             return response("Não encontrado");
@@ -52,6 +52,13 @@ class ControleConteudo extends Controller
 
     public function destroy($id)
     {
-        //
+        $buscaConteudo = new Conteudo();
+        $conteudo = $buscaConteudo::find($id);
+        if (isset($conteudo)) {
+            $conteudo->delete();
+            return response("OK", 200);
+        } else {
+            return response("Não encontrado");
+        }
     }
 }

@@ -51,6 +51,13 @@ class ControleUsuarios extends Controller
 
     public function destroy($id)
     {
-        //
+        $buscaUsuarios = new Usuario();
+        $usuario = $buscaUsuarios::find($id);
+        if (isset($usuario)) {
+            $usuario->delete();
+            return response("OK", 200);
+        } else {
+            return response("Usuario não encontrado", 404);
+        }
     }
 }
