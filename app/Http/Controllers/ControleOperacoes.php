@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\DescricaoCategoria;
+use App\TipoUsuario;
 use Illuminate\Http\Request;
 
 class ControleOperacoes extends Controller
 {
-    public function geraCodigos()
+    public function tipos()
     {
-        $inicio = mt_rand(1000, 4999);
-        $final = mt_rand(5000, 9999);
-        $codigo = $inicio . $final;
-        return $codigo;
+        $tipos = new TipoUsuario();
+        $tipo = $tipos::all();
+        if (isset($tipo)) {
+            return json_encode($tipo);
+        } else {
+            return response("Não encontrado", 404);
+        }
+
     }
 
     public function descricoes()

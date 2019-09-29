@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Conteudo extends Model
 {
     use SoftDeletes;
-    public function categoria(){
-        return $this->belongsTo('App\Categoria','id','categoria_id');
+
+    public function categoria()
+    {
+        return $this->belongsTo('App\DescricaoCategoria');
     }
-    public function autor(){
-        return $this->hasOne('App\Usuario','id','autor');
+
+    public function autor()
+    {
+        return $this->belongsTo('App\Usuario', 'id', 'autor');
     }
 }

@@ -8,6 +8,14 @@ use function GuzzleHttp\Promise\all;
 
 class ControleConteudo extends Controller
 {
+    public function geraCodigos()
+    {
+        $inicio = mt_rand(1000, 4999);
+        $final = mt_rand(5000, 9999);
+        $codigo = $inicio . $final;
+        return $codigo;
+    }
+
     public function index()
     {
         $buscaConteudo = new Conteudo();
@@ -26,7 +34,13 @@ class ControleConteudo extends Controller
 
     public function store(Request $request)
     {
-        //
+        $novo_conteudo = new Conteudo();
+        $novo_conteudo->id = $this->geraCodigos();
+        $novo_conteudo->autor = $request->input('autor');
+        $novo_conteudo->categoria_id = $request->input('categoria');
+        $novo_conteudo->url = $request->input('url');
+        $novo_conteudo->descricao = $request->input('descricao');
+        $novo_conteudo->save();
     }
 
     public function show($id)

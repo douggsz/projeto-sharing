@@ -18,9 +18,4 @@ class Usuario extends Model
     {
         return $this->hasMany('App\Conteudo', 'autor', 'id');
     }
-
-    public function categorias()
-    {
-        return $this->hasMany('App\categoria', 'codigo_categoria', 'categoria_id');
-    }
 }

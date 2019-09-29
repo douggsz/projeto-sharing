@@ -25,7 +25,12 @@ class ControleUsuarios extends Controller
 
     public function store(Request $request)
     {
-
+        $novo_usuario = new Usuario();
+        $novo_usuario->usuario = $request->input('usuario');
+        $novo_usuario->nome = $request->input('nome');
+        $novo_usuario->senha = bcrypt($request->input('senha'));
+        $novo_usuario->tipo = $request->input('tipo');
+        $novo_usuario->save();
     }
 
     public function show($id)

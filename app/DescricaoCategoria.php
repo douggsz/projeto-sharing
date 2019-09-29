@@ -9,8 +9,8 @@ class DescricaoCategoria extends Model
 {
     use SoftDeletes;
 
-    function categorias()
+    public function conteudo()
     {
-        return $this->belongsTo('App\Categoria', 'descricao', 'id');
+        $this->hasMany('App\Conteudo');
     }
 }

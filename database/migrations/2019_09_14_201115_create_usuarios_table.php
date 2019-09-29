@@ -14,10 +14,8 @@ class CreateUsuariosTable extends Migration
             $table->string('usuario');
             $table->string('nome')->nullable(false);
             $table->string('senha')->nullable(false);
-            $table->Integer('categorias_id')->nullable();
             $table->unsignedBigInteger('tipo');
             $table->foreign('tipo')->references('id')->on('tipo_usuarios');
-            $table->foreign('categorias_id')->references('codigo_categoria')->on('categorias');
             $table->softDeletes();
             $table->timestamps();
         });
