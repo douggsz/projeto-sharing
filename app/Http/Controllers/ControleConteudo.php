@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Conteudo;
+use App\Usuario;
 use Illuminate\Http\Request;
 use function GuzzleHttp\Promise\all;
 
@@ -29,7 +30,13 @@ class ControleConteudo extends Controller
 
     public function create()
     {
-        //
+        $buscaConteudo = new Conteudo();
+        $listaConteudo = $buscaConteudo::all();
+        if (isset($listaConteudo)) {
+            return view('biblioteca', compact('listaConteudo'));
+        } else {
+            return view('biblioteca');
+        }
     }
 
     public function store(Request $request)

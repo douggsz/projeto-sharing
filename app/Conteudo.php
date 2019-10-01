@@ -16,6 +16,6 @@ class Conteudo extends Model
 
     public function autor()
     {
-        return $this->belongsTo('App\Usuario', 'id', 'autor');
+        return $this->belongsTo('App\Usuario');
     }
 }

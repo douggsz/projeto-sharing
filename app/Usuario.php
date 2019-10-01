@@ -16,6 +16,6 @@ class Usuario extends Model
 
     public function conteudos()
     {
-        return $this->hasMany('App\Conteudo', 'autor', 'id');
+        return $this->hasMany('App\Conteudo');
     }
 }

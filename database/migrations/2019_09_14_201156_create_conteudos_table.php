@@ -16,13 +16,14 @@ class CreateConteudosTable extends Migration
         Schema::create('conteudos', function (Blueprint $table) {
             $table->unsignedBigInteger('id');
             $table->primary('id');
+            $table->string('titulo');
             $table->string('url')->default('Material');
-            $table->unsignedBigInteger('autor');
+            $table->unsignedBigInteger('usuario_id');
             $table->unsignedBigInteger('categoria_id');
             $table->string('descricao')->default('Conteudo não possui descrição');
             $table->integer('visualizacoes')->default(0);
             $table->float('avaliacao')->default(0);
-            $table->foreign('autor')->references('id')->on('usuarios');
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
             $table->foreign('categoria_id')->references('id')->on('descricao_categorias');
             $table->softDeletes();
             $table->timestamps();
