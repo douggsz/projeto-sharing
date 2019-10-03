@@ -29,11 +29,9 @@
 
     @endif
 </main>
-<div class="footer-dark">
-    <footer>
-        @yield('footer')
-    </footer>
-</div>
+
+@yield('footer')
+
 <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
 </body>
 </html>

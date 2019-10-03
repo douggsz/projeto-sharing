@@ -20,6 +20,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@vimeo/player": "^2.10.0",
         "jquery": "^3.4.1"
     }
 }
