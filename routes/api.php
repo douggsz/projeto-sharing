@@ -7,6 +7,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/descricao', 'ControleOperacoes@descricoes');
 Route::get('/tipos','ControleOperacoes@tipos');
-Route::resource('/categorias', 'ControleCategoria');
 Route::resource('/conteudo', 'ControleConteudo');
 Route::resource('/usuarios', 'ControleUsuarios');

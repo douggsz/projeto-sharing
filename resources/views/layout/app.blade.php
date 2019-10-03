@@ -16,22 +16,19 @@
     <title id="titulo">@yield('titulo')</title>
 </head>
 <body>
-
 <header>
-    @yield('header')
+    @hasSection('header')
+        @yield('header')
+    @endif
 </header>
-
 <main role="main">
-
     @hasSection('body')
-
         @yield('body')
-
     @endif
 </main>
-
-@yield('footer')
-
+@hasSection('footer')
+    @yield('footer')
+@endif
 <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
 </body>
 </html>

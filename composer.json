@@ -14,14 +14,24 @@
         "kreait/laravel-firebase": "^1.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "monolog/monolog": "1.x-dev"
+        "monolog/monolog": "1.x-dev",
+        "illuminate/contracts": "^5.8",
+        "illuminate/support": "^5.8",
+        "graham-campbell/manager": "^4.0",
+        "vimeo/vimeo-api": "^3.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^8.0",
+        "laravel/framework": "^5.8|^6.0",
+        "graham-campbell/analyzer": "^2.0",
+        "graham-campbell/testbench": "^5.2",
+        "psalm/plugin-laravel": "^0.4",
+        "laravel/lumen-framework": "^5.7",
+        "vimeo/psalm": "^3.1"
     },
     "config": {
         "optimize-autoloader": true,
@@ -30,7 +40,13 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [],
+            "providers": [
+                "Vimeo\\Laravel\\VimeoServiceProvider"
+            ],
+            "aliases": {
+                "Vimeo": "Vimeo\\Laravel\\Facades\\Vimeo"
+            }
         }
     },
     "autoload": {
@@ -59,6 +75,10 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "phpunit": "phpunit",
+        "tests": [
+            "composer phpunit"
         ]
     }
 }

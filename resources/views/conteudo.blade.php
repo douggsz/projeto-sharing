@@ -7,15 +7,17 @@
     </div>
 @endsection
 @section('body')
-    <div class="bg-dark ">
-        <section class="text-white container-fluid" style="padding: 3em">
+    <div class="bg-dark container-fluid">
+        <section class="text-white" style="padding: 3em">
             <div style="padding: 2em;">
                 <input id="id" name="id" type="hidden" value="{{$resultado->id}}"/>
-                <h4>{{$resultado->titulo}}</h4>
-                <p>{{$resultado->descricao}}</p>
+                <input id="tituloBanco" name="titulo" type="hidden" value="{{$resultado->titulo}}"/>
+                <h4 class="text text-white">{{$resultado->titulo}}</h4>
+                <p class="text text-white">{{$resultado->descricao}}</p>
                 <iframe height="100%" width="100%" frameborder="0"
-                        allowfullscreen src="{{$resultado->url}}" class="video-container"></iframe>
-                <p>{{$resultado->visualizacoes}} Visualiações</p>
+                        allowfullscreen src="{{$resultado->url}}" class="video-container"
+                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <p class="text text-white">{{$resultado->visualizacoes}} Visualiações</p>
             </div>
         </section>
     </div>
@@ -23,38 +25,46 @@
 @section('footer')
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': "{{csrf_token()}}"
             }
         });
 
-        iframe = document.querySelector('iframe');
-        player = new Vimeo.Player(iframe);
+        var iframe = document.querySelector('iframe');
+        var player = new Vimeo.Player(iframe);
+        var titulo = $('#tituloBanco').val();
 
-        player.getEnded().then(function (ended) {
-            if (ended) {
-                alert('Obrigado por assistir!')
-                getVisualizacao();
-            }
+        player.on('play', function () {
+            console.log('Executando');
+        })
+        player.on('ended', function () {
+            console.log('Finalizado');
+            getVisualizacao();
         });
 
         function getVisualizacao() {
             codigo = $('#id').val();
             $.getJSON('/api/conteudo/' + codigo, function (info) {
-                setVisualizacao(info)
+                setVisualizacao(info);
             })
         }
 
         function setVisualizacao(c) {
-            conteudo = c;
-            conteudo.visualizacoes = conteudo.visualizacoes + 1;
+            conteudo = {
+                'titulo': c.titulo,
+                'descricao': c.descricao,
+                'url': c.url,
+                'visualizacoes': c.visualizacoes + 1
+            }
             $.ajax({
                 type: "PUT",
                 url: "/api/conteudo/" + codigo,
                 data: conteudo,
                 success: function (retorno) {
-                    console.log(conteudo)
+                    console.log("/api/conteudo/" + codigo)
+                    console.log(conteudo.visualizacoes)
                 },
                 error(error) {
                     console.log(error)
@@ -62,5 +72,12 @@
             })
         }
 
+        function setNome() {
+            document.title = titulo + ' | Sharing';
+        }
+
+        $(function () {
+            setNome();
+        })
     </script>
 @endsection

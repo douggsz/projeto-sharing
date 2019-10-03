@@ -63,12 +63,16 @@ class ControleConteudo extends Controller
 
     public function edit($id)
     {
-        //
+
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $update_conteudo = new Conteudo();
+        $conteudo = $update_conteudo::all()->find($id);
+        $conteudo->visualizacoes = $request->input('visualizacoes');
+        $conteudo->save();
+        return json_encode($conteudo);
     }
 
     public function destroy($id)
