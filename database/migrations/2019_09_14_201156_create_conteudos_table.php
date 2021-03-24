@@ -13,7 +13,7 @@ class CreateConteudosTable extends Migration
             $table->string('titulo');
             $table->string('url');
             $table->string('descricao')->default('Conteudo não possui descrição');
-             $table->foreignId('usuario_id')->constrained()->onDelete('cascade');
+            $table->foreignId('usuario_id')->constrained()->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
