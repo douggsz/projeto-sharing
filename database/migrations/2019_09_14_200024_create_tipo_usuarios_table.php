@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateTipoUsuariosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('tipo_usuarios', function (Blueprint $table) {
@@ -20,12 +16,6 @@ class CreateTipoUsuariosTable extends Migration
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('tipo_usuarios');
