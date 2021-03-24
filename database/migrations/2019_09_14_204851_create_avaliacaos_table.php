@@ -13,8 +13,7 @@ class CreateAvaliacaosTable extends Migration
             $table->float('nota');
             $table->boolean('like')->default(false);
             $table->boolean('dislike')->default(false);
-            $table->foreignId('usuario_id')->constrained()->onDelete('cascade');
-            $table->foreignId('categoria_id')->constrained()->onDelete('cascade');
+            $table->foreignId('conteudo_id')->constrained()->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
