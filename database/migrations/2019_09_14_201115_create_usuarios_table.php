@@ -11,11 +11,10 @@ class CreateUsuariosTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('usuario');
             $table->string('nome')->nullable(false);
+            $table->string('usuario');
             $table->string('senha')->nullable(false);
-            $table->unsignedBigInteger('tipo');
-            $table->foreign('tipo')->references('id')->on('tipo_usuarios');
+            $table->foreignId('tipo_usuario_id')->constrained()->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
