@@ -5,12 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateDescricaoCategoriasTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('categorias', function (Blueprint $table) {
@@ -20,12 +15,6 @@ class CreateDescricaoCategoriasTable extends Migration
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('descricao_categorias');
