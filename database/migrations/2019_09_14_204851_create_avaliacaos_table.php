@@ -6,32 +6,19 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateAvaliacaosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('avaliacaos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('usuario');
-            $table->unsignedBigInteger('codigo');
             $table->float('nota');
             $table->boolean('like')->default(false);
             $table->boolean('dislike')->default(false);
-            $table->foreign('usuario')->references('id')->on('usuarios');
-            $table->foreign('id')->references('id')->on('conteudos');
+            $table->foreignId('usuario_id')->constrained()->onDelete('cascade');
+            $table->foreignId('categoria_id')->constrained()->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('avaliacaos');
